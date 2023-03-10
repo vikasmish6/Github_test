@@ -1,0 +1,16 @@
+node {
+    def mvnHome
+    stage('clone') { // for display purposes
+        def version= '1.0.0'
+            def environment = 'Development'
+            def filename = 'samplefile1'
+        bat 'mkdir maven'
+                            bat 'cd maven'
+                            git branch: 'main', credentialsId: 'New_Github_token', url: 'https://github.com/vikasmish6/maventraining.git'
+    }
+    stage('Build') {
+        // Run the maven build
+                        bat 'cd maven'
+                        bat 'mvn clean install'
+    }
+}
